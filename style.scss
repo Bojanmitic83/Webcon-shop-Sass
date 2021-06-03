@@ -1,0 +1,444 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+/*************************
+varaibles
+*************************/
+$blue: #4831d4;
+$green: #ccf381;
+$lightgray: #f7f7f7;
+$gray: #333;
+$white: #fff;
+$transition: .3s ease;
+$font: 16px;
+$fontFamily: 'Roboto', sans-serif;
+$padding: 100px 0;
+$boxShadow: 0 0 10px #b7b6b6;
+$textShadow: 0 0 2px #333;
+/*************************
+mixins
+*************************/
+@mixin flex($justify,$align, $direction) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin  btn {
+    padding: 20px 30px;
+    text-transform: uppercase;
+    color: $gray;
+    border: none;
+    background: $green;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: &$transition;
+    &:hover {
+        color: $white;
+        background: $gray;
+    }
+}
+/*************************
+basic styles
+*************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-size: $font;
+    font-family: $fontFamily;
+    color: $gray;
+
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    @media (max-width: 768px) {
+        width: 90%;
+    }
+}
+/*************************
+topnav
+*************************/
+.topnav {
+    background: $lightgray;
+    @include flex(space-between, center, row);
+    padding: 10px 50px;
+    p {
+        a {
+            color: $gray;
+            &:hover {
+                color: $green;
+            }
+        }
+    }
+}
+/*************************
+nav
+*************************/
+nav {
+    border-bottom: 4px solid $green;
+    padding: 20px 50px;
+    @include flex(space-between, center, row);
+    h2 {
+        font-size: 2rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+        @media (max-width: 768px) {
+            margin-bottom: 10px;
+        }
+        span {
+            font-style: italic;
+            font-weight: 700;
+            color: $green;
+            text-shadow: $textShadow;
+        }
+    }
+    ul {
+        @include flex(space-between, center, row);
+        li {
+            margin: 0 100px;
+            @media (max-width: 768px) {
+                margin: 0 10px;
+            }
+            a {
+                color: $gray;
+                transition: $transition;
+                font-weight: 700;
+                &:hover {
+                    text-decoration: underline;
+                    color: $green;
+                }
+            }
+        }
+    }
+    .shoping {
+        a {
+            color: $gray;
+            margin-left: 15px;
+        }
+    }
+}
+/*************************
+header
+*************************/
+header {
+    background-image: url(img/header.jpg);
+    height: 85vh;
+    background-position: center;
+    background-size: cover;
+    .hgroup {
+        height: 85vh;
+        padding: 0 0 0 50px;
+        @include flex(center, flex-start, column);
+        h5 {
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            font-weight: 900
+        }
+        h1 {
+            font-size: 4.5rem;
+            color: $white;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 5px;
+            @media (max-width: 768px) {
+                font-size: 3.5rem;
+            }
+            span {
+                color: $green;
+            }
+        }
+        button {
+            @include btn;
+        }
+    }
+}
+/*************************
+products
+*************************/
+.products  {
+    padding: 100px 0;
+    h2 {
+        font-size: 3rem;
+        text-align: center;
+        font-weight: 900;
+        @media (max-width: 768px) {
+            font-size: 2rem;
+        }
+        &::after {
+            display: block;
+            content: "";
+            width: 200px;
+            height: 2px;
+            background: $green;
+            margin: 35px auto;
+        }
+    }
+    .row {
+        @include flex(space-between, center, row);
+        div {
+            flex: 0 0 31%;
+            @media (max-width: 768px) {
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+            }
+            box-shadow: $boxShadow;
+            img {
+                width: 100%;
+            }
+            h3 {
+                font-size: 1.8rem;
+                font-weight: 900;
+                padding: 10px 0 30px 20px;
+            }
+            h5 {
+                padding: 0 0 20px 20px;
+                font-size: 1rem;
+                span {
+                    color: $blue;
+                    text-decoration: line-through;
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+}
+/*************************
+footer
+*************************/
+footer {
+    background: $blue;
+    color: $white;
+    .container {
+        padding: 100px 0;
+        @include flex(space-between, center, row);
+        article {
+            flex: 0 0 33%;
+            @media (max-width: 768px) {
+                flex: 0 0 100%;
+            }
+            h3 {
+                font-size: 1.8rem;
+                font-weight: 900;
+                padding-bottom: 40px;
+            }
+            ul {
+                li {
+                    margin-bottom: 10px;
+                    a {
+                        color: $green;
+                        font-weight: 700;
+                        transition: $transition;
+                        &:hover {
+                            color: $white;
+                        }
+                    }
+                }
+            }
+            p {
+                line-height: 1.6;
+                margin-bottom: 10px;
+            }
+            form {
+                input {
+                    padding: 12px;
+                    font-size: .9rem;
+                }
+                button {
+                    padding: 8px;
+                    color: $gray;
+                    border: none;
+                    background: $green;
+                    font-weight: 700;
+                    font-size: .8rem;
+                    cursor: pointer;
+                    position: relative;
+                    right: 20px;
+                    transition: &$transition;
+                    &:hover {
+                        color: $white;
+                        background: $gray;
+                    }
+                }
+            }
+        }
+    }
+}
+/*************************
+bottombar
+*************************/
+.bottombar {
+    background: $green;
+    padding: 10px 50px;
+    @include flex(space-between, center, row);
+    p {
+        font-weight: 500;
+    }
+    .social {
+        a {
+            color: $gray;
+            margin-left: 20px;
+        }
+    }
+}
+/*************************
+blogshop
+*************************/
+.blogshop,
+.product {
+    background: $lightgray;
+    div {
+        padding: 55px 0;
+        text-align: center;
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+    }
+}
+/*************************
+support
+*************************/
+.shopsupport {
+    padding: 100px 0;
+    text-align: center;
+    border-bottom: 3px solid $green;
+    .container {
+        @include flex(space-between, center, row);
+        article {
+            padding: 30px 0;
+            flex: 0 0 23%;
+            border: 1px solid $gray;
+            box-shadow: $boxShadow;
+            @media (max-width: 768px) {
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+            }
+            h3 {
+                font-size: 1.5rem;
+                font-weight: 900;
+                padding-bottom: 20px;
+            }
+            i {
+                font-size: 2rem;
+                text-shadow: $textShadow;
+                padding-bottom: 20px;
+                color: $green;
+            }
+        }
+    }
+}
+/*************************
+discount
+*************************/
+.discount {
+    text-align: right;
+    background-image: url(img/shop.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 75vh;
+    @media (max-width: 768px) {
+        background-position: left;
+    }
+    .container {
+        height: 75vh;
+        @include flex(center, flex-end, column);
+        h4 {
+            text-transform: uppercase;
+            font-size: 2rem;
+            font-weight: 400;
+            @media (max-width: 768px) {
+                font-size: 1rem;
+            }
+        }
+        h2 {
+            font-size: 6rem;
+            font-weight: 900;
+            padding: 20px 0;
+            @media (max-width: 768px) {
+                font-size: 4rem;
+            }
+        }
+        button {
+            @include btn;
+        }
+        p {
+            padding-top: 20px;
+        }
+    }
+}
+/*************************
+product nike
+*************************/
+.nike {
+    @include flex(justify-content, center, row);
+    article {
+        flex: 0 0 50%;
+        padding: 100px 0;
+        @media (max-width: 768px) {
+            flex: 0 0 100%;
+            padding: 20px 0;
+        }
+        img {
+            width: 100%;
+        }
+        .text {
+            padding-left: 20px;
+            h3 {
+                font-size: 3rem;
+                font-weight: 900;
+                padding-bottom: 10px;
+            }
+            h4 {
+                font-size: 1.8rem;
+                color: $green;
+                text-shadow: $textShadow;
+                padding-bottom: 20px;
+            }
+            h5 {
+                font-size: 1rem;
+                margin-bottom: 20px;
+                span {
+                    color: $blue;
+                }
+            }
+            hr {
+                height: 2px ;
+                border: none;
+                background: $gray;
+                margin-bottom: 20px;
+            }
+            p {
+                line-height: 1.5;
+                margin-bottom: 15px;
+            }
+            button {
+                @include btn;
+            }
+            i {
+                width: 55px;
+                height: 55px;
+                line-height: 55px;
+                border: 1px solid $gray;
+                background: transparent;
+                color: $gray;
+                text-align: center;
+                font-size: 1.2rem;
+                margin-left: 20px;
+                
+            }
+        }
+    }
+}
+
